@@ -1,8 +1,8 @@
+
 module RedmineGitMirror
   module Patches
-    unloadable
+    # unloadable
     module RepositoriesHelperPatch
-
       def git_mirror_field_tags(form, repository)
         content_tag('p', form.text_field(
           :url,
@@ -15,4 +15,9 @@ module RedmineGitMirror
       end
     end
   end
+end
+
+
+unless RepositoriesController.included_modules.include?(RedmineGitMirror::Patches::RepositoriesHelperPatch)
+  RepositoriesController.send(:include, RedmineGitMirror::Patches::RepositoriesHelperPatch)
 end

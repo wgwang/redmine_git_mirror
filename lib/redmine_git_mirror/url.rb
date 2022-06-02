@@ -5,6 +5,7 @@ module URI
   class GIT < Generic
     DEFAULT_PORT = 9418
   end
+  # register_scheme 'GIT', GIT
   @@schemes['GIT'] = GIT
 end
 
